@@ -53,6 +53,7 @@
       
       $(document).ready(function() {
         $(".ar-object").click(function() {
+          closeNav();
           var modelId = $(this).attr("id");
           var modelViewer = document.querySelector("#model-viewer");
           

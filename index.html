@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Digital Rhombus Studios Pvt Ltd</title>
+    <title>Digital Rhombus Studios PVT LTD</title>
     <meta charset="utf-8">
     <meta name="description" content="<model-viewer> template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
     </div>
 
     <!-- <model-viewer> HTML element -->
-    <model-viewer src="Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+    <model-viewer id="model-viewer" src="Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
       <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
       </div>
@@ -37,6 +37,7 @@
         <img src="ar_hand_prompt.png">
       </div>
     </model-viewer>
+    
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -49,6 +50,29 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
+      
+      $(document).ready(function() {
+        $(".ar-object").click(function() {
+          var modelId = $(this).attr("id");
+          var modelViewer = document.querySelector("#model-viewer");
+          
+          // Update the src attribute based on the clicked item
+          switch (modelId) {
+            case "1":
+              modelViewer.src = "Astronaut.glb";
+              break;
+            case "2":
+              modelViewer.src = "1.glb";
+              break;
+            case "3":
+              modelViewer.src = "2.glb";
+              break;
+            case "4":
+              modelViewer.src = "3.glb";
+              break;
+          }
+        });
+      });
     </script>
   </body>
 </html>

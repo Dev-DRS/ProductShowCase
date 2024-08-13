@@ -61,6 +61,7 @@
       $(document).ready(function() {
         $(".ar-object").click(function() {
           closeNav();
+          $("#ar-buttons").fadeOut();
           var modelId = $(this).attr("id");
           var modelViewer = document.querySelector("#model-viewer");
           

@@ -65,7 +65,7 @@
           var modelId = $(this).attr("id");
           selectedOption = modelId;
           var modelViewer = document.querySelector("#model-viewer");
-          
+          $("#ar-buttons").fadeOut();
           // Update the src attribute based on the clicked item
           switch (modelId) {
             case "1":

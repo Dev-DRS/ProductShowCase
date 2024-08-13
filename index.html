@@ -72,10 +72,10 @@
               modelViewer.src = "Astronaut.glb";
               break;
             case "2":
-              modelViewer.src = "1.glb";
+              modelViewer.src = "2.glb";
               break;
             case "3":
-              modelViewer.src = "2.glb";
+              modelViewer.src = "3.glb";
               break;
             case "4":
               modelViewer.src = "4.glb";
@@ -87,9 +87,9 @@
           }
         });
 
-        // Trigger UI button visibility after AR session ends
-        document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
-          if (event.detail.status === 'not-presenting' && selectedOption === "4") {
+        // Show UI buttons when clicking AR view in option 4
+        $("#model-viewer").on("click", function() {
+          if (selectedOption === "4") {
             $("#ar-buttons").fadeIn();
           }
         });
@@ -100,7 +100,7 @@
           if (modelViewer.animationName) {
             modelViewer.animationName = ''; // Stops the animation
           } else {
-            modelViewer.animationName = 'explode'; // Start a specific animation
+            modelViewer.animationName = 'YourAnimationName'; // Start a specific animation
           }
         });
 

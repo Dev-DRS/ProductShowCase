@@ -72,10 +72,10 @@
               modelViewer.src = "Astronaut.glb";
               break;
             case "2":
-              modelViewer.src = "1.glb";
+              modelViewer.src = "2.glb";
               break;
             case "3":
-              modelViewer.src = "2.glb";
+              modelViewer.src = "3.glb";
               break;
             case "4":
               modelViewer.src = "4.glb";
@@ -87,22 +87,10 @@
           }
         });
 
-        // Trigger UI button visibility after AR session ends
-        document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
-          if (event.detail.status === 'not-presenting' && selectedOption === "4") {
+        // Show UI buttons when clicking AR view in option 4
+        $("#model-viewer").on("click", function() {
+          if (selectedOption === "4") {
             $("#ar-buttons").fadeIn();
-          }
-        });
-
-        // Modify AR view when model is spawned in AR mode
-        document.querySelector("#model-viewer").addEventListener('model-visibility', (event) => {
-          if (event.detail.visible) {
-            const modelViewer = document.querySelector("#model-viewer");
-            
-            // Adjust environment settings (e.g., background color, ground reflection, etc.)
-            modelViewer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';  // Example: semi-transparent background
-            modelViewer.environmentImage = 'path-to-your-environment.hdr'; // Set custom environment image
-            modelViewer.groundShadowColor = 'rgba(255, 255, 255, 0.5)';  // Example: semi-transparent shadow
           }
         });
 

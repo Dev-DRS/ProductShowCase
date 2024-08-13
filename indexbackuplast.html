@@ -38,7 +38,7 @@
       </div>
 
       <!-- Overlay Buttons -->
-      <div class="ar-buttons">
+      <div class="ar-buttons" id="ar-buttons" style="display: none;">
         <button id="toggle-animation">Toggle Animation</button>
         <button id="change-color">Change Color</button>
       </div>
@@ -58,9 +58,12 @@
       }
       
       $(document).ready(function() {
+        let selectedOption = null;
+
         $(".ar-object").click(function() {
           closeNav();
           var modelId = $(this).attr("id");
+          selectedOption = modelId;
           var modelViewer = document.querySelector("#model-viewer");
           
           // Update the src attribute based on the clicked item
@@ -84,13 +87,20 @@
           }
         });
 
+        // Show UI buttons when clicking AR view in option 4
+        $("#model-viewer").on("click", function() {
+          if (selectedOption === "4") {
+            $("#ar-buttons").fadeIn();
+          }
+        });
+
         // Toggle Animation Button
         $('#toggle-animation').click(function() {
           const modelViewer = document.querySelector("#model-viewer");
           if (modelViewer.animationName) {
             modelViewer.animationName = ''; // Stops the animation
           } else {
-            modelViewer.animationName = 'explode'; // Start a specific animation
+            modelViewer.animationName = 'YourAnimationName'; // Start a specific animation
           }
         });
 

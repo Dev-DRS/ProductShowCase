@@ -14,7 +14,7 @@ body {
 }
 
 model-viewer {
-  width: 70%; /* Adjusted width */
+  width: 60%; /* Adjusted width */
   height: 60%; /* Adjusted height */
   background-color: #696767;
   position: absolute;

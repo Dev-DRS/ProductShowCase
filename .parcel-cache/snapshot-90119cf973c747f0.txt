@@ -1,0 +1,18 @@
+17
+76C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\.gitattributes133670766150737924 0
+73C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\ar_icon.png133670566100000000 0
+69C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\.vscode133679381512379027 1
+67C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\1.glb133667238212581155 0
+67C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\2.glb133667238213566249 0
+67C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\3.glb133668161529684130 0
+67C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\4.glb133679328461327558 0
+80C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\ar_hand_prompt.png133670566100000000 0
+75C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\Astronaut.glb133670566100000000 0
+73C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\snippet.txt133670566100000000 0
+72C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\index.html133679415130865015 0
+78C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\indexbackup.html133671509440462400 0
+73C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\poster.webp133670566100000000 0
+71C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\script.js133670566100000000 0
+77C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\stylebackup.css133671509674636505 0
+72C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\styles.css133671638562806276 0
+83C:\Users\Admin\Documents\GitHub\AR_ModelViewer\AR_ModelViewer\.vscode\settings.json133679381512541004 0

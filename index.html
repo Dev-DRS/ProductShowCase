@@ -22,12 +22,6 @@
 
       <span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span>
 
-      <!-- Toggle Button -->
-      <label class="switch">
-        <input type="checkbox" id="toggle-button">
-        <span class="slider round"></span>
-      </label>
-
       <button type="button" id="place-button">PLACE</button>
     </div>
 
@@ -41,6 +35,12 @@
       </button>
       <div id="ar-prompt">
         <img src="ar_hand_prompt.png">
+      </div>
+
+      <!-- Overlay Buttons -->
+      <div class="ar-buttons">
+        <button id="toggle-animation">Toggle Animation</button>
+        <button id="change-color">Change Color</button>
       </div>
     </model-viewer>
     
@@ -84,74 +84,47 @@
           }
         });
 
-        // Toggle button functionality
-        $('#toggle-button').change(function() {
-          if ($(this).is(':checked')) {
-            // Action for the toggle being on
-            console.log("Toggle ON");
-            $('#place-button').text('ON');
+        // Toggle Animation Button
+        $('#toggle-animation').click(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          if (modelViewer.animationName) {
+            modelViewer.animationName = ''; // Stops the animation
           } else {
-            // Action for the toggle being off
-            console.log("Toggle OFF");
-            $('#place-button').text('OFF');
+            modelViewer.animationName = 'YourAnimationName'; // Start a specific animation
           }
+        });
+
+        // Change Color Button
+        $('#change-color').click(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          const material = modelViewer.model.materials[0];
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random(), 1]);
         });
       });
     </script>
     
     <style>
-      /* Toggle Switch CSS */
-      .switch {
+      /* Style for AR overlay buttons */
+      .ar-buttons {
         position: absolute;
-        top: 20px;
-        left: 20px;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
       }
 
-      .switch input { 
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        transition: .4s;
-      }
-
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        transition: .4s;
-      }
-
-      input:checked + .slider {
+      .ar-buttons button {
         background-color: #2196F3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
       }
 
-      input:checked + .slider:before {
-        transform: translateX(26px);
-      }
-
-      .slider.round {
-        border-radius: 34px;
-      }
-
-      .slider.round:before {
-        border-radius: 50%;
+      .ar-buttons button:hover {
+        background-color: #0b7dda;
       }
     </style>
   </body>

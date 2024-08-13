@@ -36,6 +36,13 @@
       <div id="ar-prompt">
         <img src="ar_hand_prompt.png">
       </div>
+
+
+      <div class="ar-buttons" id="ar-buttons" style="display: none;">
+        <button id="toggle-animation">Toggle Animation</button>
+        <button id="change-color">Change Color</button>
+      </div>
+      
     </model-viewer>
     
     <script src="script.js"></script>
@@ -54,6 +61,7 @@
       $(document).ready(function() {
         $(".ar-object").click(function() {
           closeNav();
+          $("#ar-buttons").fadeOut();
           var modelId = $(this).attr("id");
           var modelViewer = document.querySelector("#model-viewer");
           
@@ -63,17 +71,64 @@
               modelViewer.src = "Astronaut.glb";
               break;
             case "2":
-              modelViewer.src = "1.glb";
-              break;
-            case "3":
               modelViewer.src = "2.glb";
               break;
-            case "4":
+            case "3":
               modelViewer.src = "3.glb";
+              break;
+            case "4":
+              modelViewer.src = "4.glb";
               break;
           }
         });
+                // Show UI buttons when clicking AR view in option 4
+                $("#model-viewer").on("click", function() {
+          if (selectedOption === "4") {
+            $("#ar-buttons").fadeIn();
+          }
+        });
+
+        // Toggle Animation Button
+        $('#toggle-animation').click(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          if (modelViewer.animationName) {
+            modelViewer.animationName = ''; // Stops the animation
+          } else {
+            modelViewer.animationName = 'explode'; // Start a specific animation
+          }
+        });
+
+        // Change Color Button
+        $('#change-color').click(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          const material = modelViewer.model.materials[0];
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random(), 1]);
+        });
       });
     </script>
+        <style>
+          /* Style for AR overlay buttons */
+          .ar-buttons {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+          }
+    
+          .ar-buttons button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+    
+          .ar-buttons button:hover {
+            background-color: #0b7dda;
+          }
+        </style>
   </body>
 </html>

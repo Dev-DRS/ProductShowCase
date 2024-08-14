@@ -1,200 +1,193 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <title>Digital Rhombus Studios PVT LTD</title>
-  <meta charset="utf-8">
-  <meta name="description" content="<model-viewer> template">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link type="text/css" href="./styles.css" rel="stylesheet"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-  <!-- <model-viewer> HTML element -->
-  <model-viewer id="model-viewer" src="3.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
-    <div class="progress-bar hide" slot="progress-bar">
-      <div class="update-bar"></div>
-    </div>
-    <button slot="ar-button" id="ar-button">
-      View in your space
-    </button>
-    <div id="ar-prompt">
-      <img src="ar_hand_prompt.png">
-    </div>
-
-    <div id="content">
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a class="ar-object" id="1" href="#">item_1</a>
-        <a class="ar-object" id="2" href="#">item_2</a>
-        <a class="ar-object" id="3" href="#">item_3</a>
-        <a class="ar-object" id="4" href="#">item_4</a>
+  <head>
+    <title>Digital Rhombus Studios PVT LTD</title>
+    <meta charset="utf-8">
+    <meta name="description" content="<model-viewer> template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer id="model-viewer" src="3.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+        View in your space
+      </button>
+      <div id="ar-prompt">
+        <img src="ar_hand_prompt.png">
       </div>
 
-      <div id="container" style="position: fixed;"></div>
-
-      <span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span>
-
-      <button type="button" id="place-button">PLACE</button>
-    </div>
-
-    <!-- Overlay Buttons -->
-    <div class="ar-buttons" id="ar-buttons" style="display: none;">
-      <div class="toggle-switch">
-        <input type="checkbox" id="toggle-animation">
-        <label for="toggle-animation"></label>
-        <span id="toggle-label">Start Animation</span>
-      </div>
-      <!-- <button id="change-color">Change Color</button> -->
-    </div>
-  </model-viewer>
-
-  <script src="script.js"></script>
-  <!-- Loads <model-viewer> for browsers: -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-
-  <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-    
-    $(document).ready(function() {
-      let selectedOption = null;
-
-      $(".ar-object").click(function() {
-        closeNav();
-        var modelId = $(this).attr("id");
-        selectedOption = modelId;
-        var modelViewer = document.querySelector("#model-viewer");
-        
-        // Update the src attribute based on the clicked item
-        switch (modelId) {
-          case "1":
-            modelViewer.src = "3.glb";
-            break;
-          case "2":
-            modelViewer.src = "2.glb";
-            break;
-          case "3":
-            modelViewer.src = "5.glb";
-            break;
-          case "4":
-            modelViewer.src = "4.glb";
-            modelViewer.animationName = '';
-            break;
-        }
-      });
-
-      // Show UI buttons when clicking AR view in option 4
-      $("#model-viewer").on("click", function() {
-        if (selectedOption === "4") {
-          $("#ar-buttons").fadeIn();
-        }
-      });
-
-      // Toggle Animation Switch
-      $('#toggle-animation').change(function() {
-        const modelViewer = document.querySelector("#model-viewer");
-        if ($(this).is(':checked')) {
-          modelViewer.animationName = 'explode'; // Start a specific animation
-          $('#toggle-label').text('Stop Animation');
-        } else {
-          modelViewer.animationName = ''; // Stops the animation
-          $('#toggle-label').text('Start Animation');
-        }
-      });
-
-      // Change Color Button
-      $('#change-color').click(function() {
-        const modelViewer = document.querySelector("#model-viewer");
-        const material = modelViewer.model.materials[0];
-        material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random(), 1]);
-      });
-    });
-  </script>
+      <div id="content">
+        <div id="mySidenav" class="sidenav" >
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a class="ar-object" id="1" href="#">item_1</a>
+          <a class="ar-object" id="2" href="#">item_2</a>
+          <a class="ar-object" id="3" href="#">item_3</a>
+          <a class="ar-object" id="4" href="#">item_4</a>
+        </div>
   
-  <style>
-    /* Style for AR overlay buttons */
-    .ar-buttons {
-      position: fixed;
-      bottom: 70px;
-      right: 200px; /* Positioned to the right side */
-      z-index: 1000;
-    }
+        <div id="container" style="position: fixed;"></div>
+  
+        <span style="font-size:30px;cursor:pointer;position: absolute;" onclick="openNav()">&#9776; open</span>
+  
+        <button type="button" id="place-button">PLACE</button>
+      </div>
 
-    .ar-buttons button {
-      background-color: #2196F3;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      <!-- Overlay Buttons -->
+      <div class="ar-buttons" id="ar-buttons" style="display: none;">
+        <label class="switch">
+          <input type="checkbox" id="toggle-animation">
+          <span class="slider round"></span>
+        </label>
+        <button id="change-color">Change Color</button>
+      </div>
+    </model-viewer>
+    
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
-    .ar-buttons button:hover {
-      background-color: #0b7dda;
-    }
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
 
-    /* Toggle Switch Styles */
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-    }
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      
+      $(document).ready(function() {
+        let selectedOption = null;
 
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+        $(".ar-object").click(function() {
+          closeNav();
+          var modelId = $(this).attr("id");
+          selectedOption = modelId;
+          var modelViewer = document.querySelector("#model-viewer");
+          
+          // Update the src attribute based on the clicked item
+          switch (modelId) {
+            case "1":
+              modelViewer.src = "3.glb";
+              break;
+            case "2":
+              modelViewer.src = "2.glb";
+              break;
+            case "3":
+              modelViewer.src = "5.glb";
+              break;
+            case "4":
+              modelViewer.src = "model.glb";
+              modelViewer.animationName = '';
+              break;
+          }
+        });
 
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 34px;
-    }
+        // Show UI buttons when clicking AR view in option 4
+        $("#model-viewer").on("click", function() {
+          if (selectedOption === "4") {
+            $("#ar-buttons").fadeIn();
+          }
+        });
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      border-radius: 50%;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .4s;
-    }
+        // Toggle Animation Switch
+        $('#toggle-animation').change(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          if (this.checked) {
+            modelViewer.animationName = 'CubeAction'; // Start a specific animation
+          } else {
+            modelViewer.animationName = ''; // Stops the animation
+          }
+        });
 
-    input:checked + .slider {
-      background-color: #2196F3;
-    }
+        // Change Color Button
+        $('#change-color').click(function() {
+          const modelViewer = document.querySelector("#model-viewer");
+          const material = modelViewer.model.materials[0];
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random(), 1]);
+        });
+      });
+    </script>
+    
+    <style>
+      /* Style for AR overlay buttons */
+      .ar-buttons {
+        position: absolute;
+        bottom: 10px;
+        right: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+      }
 
-    input:checked + .slider:before {
-      transform: translateX(26px);
-    }
+      .ar-buttons button {
+        background-color: #2196F3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-    .toggle-switch label {
-      cursor: pointer;
-      display: block;
-    }
+      .ar-buttons button:hover {
+        background-color: #0b7dda;
+      }
 
-    #toggle-label {
-      display: inline-block;
-      margin-left: 10px;
-      vertical-align: middle;
-    }
-  </style>
-</body>
+      /* Toggle Switch */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+    </style>
+  </body>
 </html>
